@@ -86,9 +86,14 @@ public class Deploy extends AbstractMojo {
 
     /**
      * @parameter expression="${serverGroup}"
-     * @required
      */
     protected String serverGroup;
+    
+    
+    /**
+     * @parameter expression="${cluster}"
+     */
+    protected String cluster;
     
     protected MuleRest muleRest;
 
@@ -116,14 +121,14 @@ public class Deploy extends AbstractMojo {
 	if (finalName == null) {
 	    throw new MojoFailureException("finalName not set.");
 	}
-	if (serverGroup == null) {
-	    throw new MojoFailureException("serverGroup not set.");
+	if (serverGroup == null && cluster==null) {
+	    throw new MojoFailureException("one of serverGroup or cluster must be set.");
 	}
 	try {
 	    validateProject(appDirectory);
 	    muleRest = buildMuleRest();
 	    String versionId = muleRest.restfullyUploadRepository(name, version, getMuleZipFile(outputDirectory, finalName));
-	    String deploymentId = muleRest.restfullyCreateDeployment(serverGroup, name, versionId);
+	    String deploymentId = muleRest.restfullyCreateDeployment(serverGroup, cluster, name, versionId);
 	    muleRest.restfullyDeployDeploymentById(deploymentId);
 	} catch (Exception e) {
 	    throw new MojoFailureException("Error in attempting to deploy archive: " + e.toString(), e);

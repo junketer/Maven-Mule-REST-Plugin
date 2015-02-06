@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.nicholasastuart</groupId>
+	<groupId>org.mule.tools</groupId>
 	<artifactId>mule-mmc-rest-plugin</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.2.2.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>Mule MMC REST Plugin</name>
 	<description>Maven plugin for performing RESTful actions to the Mule ESB MMC</description>
@@ -151,4 +151,22 @@
 		</build>
 		</profile>
 	</profiles>
+	
+			<distributionManagement>
+			<snapshotRepository>
+				<id>uk01dv27</id>
+				<name>uk01dv27-snapshot</name>
+				<url>http://uk01dv27:8081/artifactory/plugins-snapshot-local</url>
+			</snapshotRepository>
+			<repository>
+				<id>uk01dv27</id>
+				<name>uk01dv27-release</name>
+				<url>http://uk01dv27.travel.oag.com:8081/artifactory/libs-release-local</url>
+	
+			</repository>
+			<site>
+				<id>uk01dv27-ftp</id>
+				<url>ftp://uk01dv27/documentation/OFS/ofs-enrichment</url>
+			</site>
+	</distributionManagement>
 </project>

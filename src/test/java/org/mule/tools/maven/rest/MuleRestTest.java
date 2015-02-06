@@ -261,6 +261,7 @@ public class MuleRestTest {
 
     @Test
     public void testRestfullyCreateDeployment() throws IOException {
+	String cluster = UUID.randomUUID().toString();
 	String serverGroup = UUID.randomUUID()
 		.toString();
 	String name = UUID.randomUUID()
@@ -276,7 +277,7 @@ public class MuleRestTest {
 	stubCreateDeployment(deploymentId);
 	stubGetDeploymentIdByName(name, deploymentId);
 	stubDeleteDeploymentById(deploymentId);
-	muleRest.restfullyCreateDeployment(serverGroup, name, versionId);
+	muleRest.restfullyCreateDeployment(serverGroup, cluster, name, versionId);
 	verifyDeleteDeploymentById(deploymentId);
 	verifyGetDeploymentIdByName();
 	verifyGetServers();
