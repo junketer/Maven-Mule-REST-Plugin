@@ -76,6 +76,12 @@ In order to post to the Mule Repository, you need only these permissions:
 	<td>
 <tr>
 	<td>
+		cluster
+	<td>
+		The name of the target cluster - now an alternative to serverGroup. Only used if no serverGroup is supplied
+	<td>
+<tr>
+	<td>
 		password
 	<td>
 		The password to the Mule MMC API.
